@@ -72,7 +72,7 @@ This section presents visual documentation of the application's user interface, 
 ### Figure 1: Authentication Module
 
 <p align="center">
-  <img src="images/Screenshot_1.jpg" alt="Login and Registration Interface" width="500"/>
+  <img src="images/Screenshot_4.jpg" alt="Login and Registration Interface" width="500"/>
 </p>
 
 **Component Analysis:** Figure 1 demonstrates the `LoginAndRegisterWindow` class, a `JFrame` subclass that serves as the application's entry point. The interface presents a dual-panel layout implemented using Swing's `CardLayout` manager, allowing seamless transition between login and registration forms without instantiating additional windows. The form components utilize custom-styled `JTextField` and `JPasswordField` elements defined in the `CustomGeneral_Components` subpackage. User input validation occurs synchronously upon form submission, with error feedback rendered via `JOptionPane` dialogs. Successful authentication triggers instantiation of the `MainMenuFrame` and disposal of the login window.
@@ -80,7 +80,7 @@ This section presents visual documentation of the application's user interface, 
 ### Figure 2: Main Navigation Hub
 
 <p align="center">
-  <img src="images/Screenshot_2.jpg" alt="Main Menu Interface" width="500"/>
+  <img src="images/Screenshot_1.jpg" alt="Main Menu Interface" width="500"/>
 </p>
 
 **Component Analysis:** Figure 2 presents the `MainMenuFrame` class, the central navigation component of the application. The interface employs a vertical `BoxLayout` to arrange navigation buttons, each implemented as instances of `MainMenuClickButton` with custom hover and click event styling. The "New Game" action triggers instantiation of a `Game` object with default parameters, while "Continue Game" queries the `Main` singleton for the current user's active game list. The "Logout" action invokes `Main.getInstance().setCurrentUser(null)` and reconstructs the `LoginAndRegisterWindow`. The frame maintains a reference to the `Main` singleton to access user session state and the game repository.
@@ -88,7 +88,7 @@ This section presents visual documentation of the application's user interface, 
 ### Figure 3: Active Game Board
 
 <p align="center">
-  <img src="images/Screenshot_4.jpg" alt="Chess Game Interface" width="500"/>
+  <img src="images/Screenshot_2.jpg" alt="Chess Game Interface" width="500"/>
 </p>
 
 **Component Analysis:** Figure 3 displays the `GameFrame` class during active gameplay. The chess board is rendered as an 8x8 grid of `ChessButton` instances, each extending `JButton` with custom painting logic to display piece icons and highlight valid move destinations. The right panel contains player information, captured pieces display, and move history scrolling list. The bottom action bar provides "Resign," "Save & Exit," and "Main Menu" controls. Mouse click events on board squares are processed by a centralized `MouseAdapter` that delegates to `Game.turnManager()` for move validation and execution. Upon successful move completion, the `Game` object invokes `notifyObservers()`, triggering UI refresh via the registered `GUIObserver` instance.
